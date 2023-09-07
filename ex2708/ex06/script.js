@@ -65,10 +65,10 @@ function verificarTelefone(index, input){
     }
 }
 function verificar(){
+    displayOutput.removeAttribute('sucesso');
     let inputs = window.document.querySelectorAll('input.input');
     let currentIndex = 0;
     erros = resetarErros(inputs);
-    console.log(erros);
     do{
         let input = inputs[currentIndex].value;
         if(estaVazio(input)){
@@ -88,6 +88,7 @@ function verificar(){
         currentIndex++;
     }while(currentIndex < inputs.length);
     if(erros.includes(true)){
+        displayOutput.children[0].children[0].innerHTML = 'ERRO!';
         displayOutput.setAttribute('ativado',1);
     for(let i = 0; i<erros.length; i++){
         if(erros[i]){
@@ -95,7 +96,9 @@ function verificar(){
         }
     }
     }else{
-        window.alert('FEITO!');
+        displayOutput.children[0].children[0].innerHTML = 'SUCESSO!';
+        displayOutput.setAttribute('sucesso', 1);
+        displayOutput.setAttribute('ativado', 1);
     }
     
 }
