@@ -3,12 +3,14 @@
 *{
     margin: 0;
     padding: 0;
+    user-select: none;
 }
 body{
     background-color: rgb(39, 39, 39);
     font-family: Arial, Helvetica, sans-serif;
 }
 div#output{
+    z-index: 1;
     width: 100vw;
     height: 0vh;
     display: flex;
@@ -37,6 +39,18 @@ div#popup{
     border-bottom: solid 10px rgb(64, 146, 64);
     border-radius: 3%;
 }
+div#popup[erro]{
+    border-bottom: solid 10px red;
+}
+div#popup[item]{
+    border-bottom: solid 10px rgb(63, 92, 146);
+}
+div#conteudoPopup{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
 #okPopup{
     background-color: rgb(64, 146, 64);
     border: none;
@@ -45,7 +59,12 @@ div#popup{
     border-radius: 10%;
     box-shadow: 1px 1px 2px #00000049;
 }
-
+#okPopup[erro]{
+    background-color: red;
+}
+#okPopup[item]{
+    background-color: rgb(63, 92, 146);
+}
 div.container{
     gap: 20px;
     display: flex;
@@ -56,6 +75,7 @@ div.container{
     justify-content: center;
 }
 div#tabela{
+    
     gap: 40px   ;
     display: flex;
     flex-direction: row;
@@ -63,9 +83,32 @@ div#tabela{
     justify-content: center;
 }
 div.coluna{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     height: 75vh;
     background-color: rgba(255, 255, 255, 0.815);
     width: 25vw;
+    padding-bottom: 20px;
+}
+div.elementosColuna{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+    height: 70%;
+}
+div.item{
+    width: 70%;
+    height: 40px;
+    background-color: rgb(63, 92, 146);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10px;
+    color: white;
 }
 .divBotoes{
     display: flex;
@@ -93,6 +136,9 @@ button.criarColuna, button.criarItem{
     border: none;
     font-size: 3em;
 }
+button.criarItem{
+    color: rgb(63, 92, 146);
+}
 button.criarColuna:hover, button.criarItem:hover{
     cursor: pointer;
     background-color: rgb(221, 221, 221);
@@ -105,4 +151,30 @@ div.botao{
 }
 div.botao[ativo]{
     display: flex;
+}
+button.remover{
+    position: static;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgb(255, 0, 0);
+    border: none;
+    color: white;
+    box-shadow: 1px 1px 3px #00000049;
+    opacity: 0.479;
+}
+button.remover:hover{
+    opacity: 0.700;
+    cursor: pointer;
+}
+button.remover:active{
+    opacity: 0.800;
+    box-shadow: none;
+}
+input[type=text]{
+    height: 40px;
+    width: 80%;
+}
+.dragging{
+    opacity: 0.5;
 }
